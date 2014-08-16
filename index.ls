@@ -1,4 +1,5 @@
-compact-obj = -> {[k,v] for k,v of it when v?}
+empty-obj = (.length is 0) . Object.keys
+compact-obj = -> {[k,v] for k,v of it when v? and (v.length or not empty-obj v)}
 compact = -> [x for x in it when x?]
 
 col-name = (col, spec)->
@@ -29,9 +30,9 @@ col-spec = (col, spec)-> compact-obj {
 	data-type: type spec
 }
 
-taike = (schema)-> {[
+taike = (schema)-> compact-obj {[
 	col-name col, spec
-	compact-obj col-spec col, spec
+	col-spec col, spec
 ] for col, spec of schema}
 
 taike.decorators =

@@ -16,6 +16,8 @@ export 'Taike':
         expect taike a:String .to.eql a: data-type:'text'
       'with a size should be varchar(length)': ->
         expect taike a:{size:50 type:String} .to.eql a:data-type:'varchar(50)'
+    'ignores functions we don\'t expect': ->
+      expect taike a:String, b: (->) .to.eql a: data-type:'text'
 
   'spec objects':
     'column sets column name': ->
@@ -68,3 +70,4 @@ export 'Taike':
       r = taike.decorators.primary \integer
       expect r .to.have.property \primary true
       expect r .to.have.property \type \integer
+
