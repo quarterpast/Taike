@@ -4,8 +4,8 @@ compact = -> [x for x in it when x?]
 col-name = (col, spec)->
 	spec.column ? col
 
-string-type = ({length, type}:spec)->
-	| spec isnt String and length? => "varchar(#length)"
+string-type = ({size})->
+	| size?     => "varchar(#size)"
 	| otherwise => \text
 
 type = ({type}:spec)->
@@ -34,7 +34,9 @@ taike = (schema)-> {[
 	compact-obj col-spec col, spec
 ] for col, spec of schema}
 
-taike.decorators = column: (column, obj)--> obj import {column}
+taike.decorators =
+	column: (column, obj)--> obj import {column}
+	size:   (size,   obj)--> obj import {size}
 bool-deco = (prop)-> taike.decorators[prop] = (import (prop):true)
 <[ primary required unique autoincrement ]> .for-each bool-deco
 taike.decorators.id = taike.decorators.primary . taike.decorators.autoincrement

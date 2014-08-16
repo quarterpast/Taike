@@ -14,8 +14,8 @@ export 'Taike':
     'string':
       'without qualification should be text': ->
         expect taike a:String .to.eql a: data-type:'text'
-      'with a length should be varchar(length)': ->
-        expect taike a:{length:50 type:String} .to.eql a:data-type:'varchar(50)'
+      'with a size should be varchar(length)': ->
+        expect taike a:{size:50 type:String} .to.eql a:data-type:'varchar(50)'
 
   'spec objects':
     'column sets column name': ->
@@ -51,3 +51,6 @@ export 'Taike':
       taike.decorators.id r = {}
       expect r .to.have.property \primary true
       expect r .to.have.property \autoincrement true
+    'size': ->
+      taike.decorators.size 255 r = {}
+      expect r .to.have.property \size 255
