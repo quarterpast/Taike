@@ -1,4 +1,4 @@
-# Taike
+# Taike [![Build Status](https://travis-ci.org/quarterto/Taike.svg)](https://travis-ci.org/quarterto/Taike)
 
 Schema generator for [node-sql](https://github.com/brianc/node-sql).
 
