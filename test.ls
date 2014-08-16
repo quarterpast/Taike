@@ -21,9 +21,9 @@ export 'Taike':
     'column sets column name': ->
       expect taike a:column:\prop .to.eql prop:property:\a
     'type sets data type': ->
-      expect taike a:type:String .to.eql a:data-type:'varchar(255)'
+      expect taike a:type:String .to.eql a:data-type:'text'
     'required sets not null': ->
-      expect taike a:{+required, type:String} .to.eql a:data-type:'varchar(255) not null'
+      expect taike a:{+required, type:String} .to.eql a:data-type:'text not null'
     'unique sets unique': ->
       expect taike a:{+unique, type:\integer} .to.eql a:data-type:'int unique'
     'primary sets primary key': ->
