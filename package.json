@@ -21,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/quarterto/Taike/issues"
   },
-  "homepage": "https://github.com/quarterto/Taike"
+  "homepage": "https://github.com/quarterto/Taike",
+  "devDependencies": {
+    "LiveScript": "^1.2.0",
+    "expect.js": "^0.3.1",
+    "mocha": "^1.21.4"
+  }
 }
