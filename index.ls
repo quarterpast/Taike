@@ -37,7 +37,11 @@ taike = (schema)-> {[
 taike.decorators =
 	column: (column, obj)--> obj import {column}
 	size:   (size,   obj)--> obj import {size}
-bool-deco = (prop)-> taike.decorators[prop] = (import (prop):true)
+
+bool-deco = (prop)->
+	taike.decorators[prop] = (obj)->
+		(if typeof obj is \object then obj else type:obj) import (prop):true
+
 <[ primary required unique autoincrement ]> .for-each bool-deco
 taike.decorators.id = taike.decorators.primary . taike.decorators.autoincrement
 

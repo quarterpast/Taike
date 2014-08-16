@@ -54,3 +54,12 @@ export 'Taike':
     'size': ->
       taike.decorators.size 255 r = {}
       expect r .to.have.property \size 255
+    'copy bare types': ->
+      r = taike.decorators.primary String
+      expect r .to.have.property \primary true
+      expect r .to.have.property \type String
+      expect String .not.to.have.property \primary
+    'work on string types': ->
+      r = taike.decorators.primary \integer
+      expect r .to.have.property \primary true
+      expect r .to.have.property \type \integer
