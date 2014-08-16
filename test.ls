@@ -47,4 +47,7 @@ export 'Taike':
     'autoincrement': ->
       taike.decorators.autoincrement r = {}
       expect r .to.have.property \autoincrement true
-
+    'id is primary and autoincrement': ->
+      taike.decorators.id r = {}
+      expect r .to.have.property \primary true
+      expect r .to.have.property \autoincrement true
