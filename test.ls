@@ -6,19 +6,45 @@ require! {
 export 'Taike':
   'should have bare keys as datatypes':
     'number should be decimal': ->
-      expect taike a:Number .to.eql a:datatype:\decimal
+      expect taike a:Number .to.eql a:data-type:\decimal
     'integer should be int': ->
-      expect taike a:\integer .to.eql a:datatype:\int
+      expect taike a:\integer .to.eql a:data-type:\int
     'boolean should be bit': ->
-      expect taike a:Boolean .to.eql a:datatype:\bit
+      expect taike a:Boolean .to.eql a:data-type:\bit
     'string':
-      'without qualification should be varchar': ->
-        expect taike a:String .to.eql a: datatype:'varchar(255)'
+      'without qualification should be text': ->
+        expect taike a:String .to.eql a: data-type:'text'
+      'with a length should be varchar(length)': ->
+        expect taike a:{length:50 type:String} .to.eql a:data-type:'varchar(50)'
 
   'spec objects':
-    'name sets column name': ->
-      expect taike a:name:\prop .to.eql a:property:\prop
+    'column sets column name': ->
+      expect taike a:column:\prop .to.eql prop:property:\a
     'type sets data type': ->
-      expect taike a:type:String .to.eql a:datatype:'varchar(255)'
+      expect taike a:type:String .to.eql a:data-type:'varchar(255)'
     'required sets not null': ->
-      expect taike a:{+required, type:String} .to.eql a:datatype:'varchar(255) not null'
+      expect taike a:{+required, type:String} .to.eql a:data-type:'varchar(255) not null'
+    'unique sets unique': ->
+      expect taike a:{+unique, type:\integer} .to.eql a:data-type:'int unique'
+    'primary sets primary key': ->
+      expect taike a:{+primary, type:\integer} .to.eql a:data-type:'int primary key'
+    'autoincrement sets autoincrement': ->
+      expect taike a:{+autoincrement, type:\integer} .to.eql a:data-type:'int autoincrement'
+
+  'decorators': ->
+    'primary': ->
+      taike.decorators.primary r = {}
+      expect r .to.have.property \primary true
+    'column': ->
+      taike.decorators.column \col r = {}
+      expect r .to.have.property \column \col
+    'required': ->
+      taike.decorators.required r = {}
+      expect r .to.have.property \required true
+    'unique': ->
+      taike.decorators.unique r = {}
+      expect r .to.have.property \unique true
+    'autoincrement': ->
+      taike.decorators.autoincrement r = {}
+      expect r .to.have.property \autoincrement true
+
