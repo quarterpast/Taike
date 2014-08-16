@@ -31,7 +31,7 @@ export 'Taike':
     'autoincrement sets autoincrement': ->
       expect taike a:{+autoincrement, type:\integer} .to.eql a:data-type:'int autoincrement'
 
-  'decorators': ->
+  'decorators':
     'primary': ->
       taike.decorators.primary r = {}
       expect r .to.have.property \primary true
