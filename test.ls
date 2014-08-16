@@ -26,8 +26,13 @@ export 'Taike':
       expect taike a:{+required, type:String} .to.eql a:data-type:'text not null'
     'unique sets unique': ->
       expect taike a:{+unique, type:\integer} .to.eql a:data-type:'int unique'
-    'primary sets primary key': ->
-      expect taike a:{+primary, type:\integer} .to.eql a:data-type:'int primary key'
+    'primary':
+      'sets primary key': ->
+        expect taike a:{+primary, type:\integer} .to.eql a:data-type:'int primary key'
+      'ignores unique': ->
+        expect taike a:{+primary, +unique, type:\integer} .to.eql a:data-type:'int primary key'
+      'ignores required': ->
+        expect taike a:{+primary, +required, type:\integer} .to.eql a:data-type:'int primary key'
     'autoincrement sets autoincrement': ->
       expect taike a:{+autoincrement, type:\integer} .to.eql a:data-type:'int autoincrement'
 
