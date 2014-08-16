@@ -3,7 +3,8 @@ compact-obj = -> {[k,v] for k,v of it when v?}
 col-name = (col, spec)->
 	spec.column ? col
 
-string-type = ({length})->
+string-type = ({length}:spec)->
+	| spec is String => \text
 	| length?   => "varchar(#that)"
 	| otherwise => \text
 
