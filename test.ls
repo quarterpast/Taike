@@ -8,7 +8,7 @@ export 'Taike':
     'number should be decimal': ->
       expect taike a:Number .to.eql a:data-type:\decimal
     'integer should be int': ->
-      expect taike a:\integer .to.eql a:data-type:\int
+      expect taike a:\integer .to.eql a:data-type:\integer
     'boolean should be bit': ->
       expect taike a:Boolean .to.eql a:data-type:\bit
     'string':
@@ -27,16 +27,16 @@ export 'Taike':
     'required sets not null': ->
       expect taike a:{+required, type:String} .to.eql a:data-type:'text not null'
     'unique sets unique': ->
-      expect taike a:{+unique, type:\integer} .to.eql a:data-type:'int unique'
+      expect taike a:{+unique, type:\integer} .to.eql a:data-type:'integer unique'
     'primary':
       'sets primary key': ->
-        expect taike a:{+primary, type:\integer} .to.eql a:data-type:'int primary key'
+        expect taike a:{+primary, type:\integer} .to.eql a:data-type:'integer primary key'
       'ignores unique': ->
-        expect taike a:{+primary, +unique, type:\integer} .to.eql a:data-type:'int primary key'
+        expect taike a:{+primary, +unique, type:\integer} .to.eql a:data-type:'integer primary key'
       'ignores required': ->
-        expect taike a:{+primary, +required, type:\integer} .to.eql a:data-type:'int primary key'
+        expect taike a:{+primary, +required, type:\integer} .to.eql a:data-type:'integer primary key'
     'autoincrement sets autoincrement': ->
-      expect taike a:{+autoincrement, type:\integer} .to.eql a:data-type:'int autoincrement'
+      expect taike a:{+autoincrement, type:\integer} .to.eql a:data-type:'integer autoincrement'
 
   'decorators':
     'primary': ->

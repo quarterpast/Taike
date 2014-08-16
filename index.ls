@@ -12,7 +12,7 @@ string-type = ({size})->
 type = ({type}:spec)->
 	if (switch type ? spec
 		| Number    => \decimal
-		| \integer  => \int
+		| \integer  => \integer
 		| Boolean   => \bit
 		| String    => string-type spec)
 	then ([that] ++ extras spec) .join " "
