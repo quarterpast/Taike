@@ -40,7 +40,7 @@ Change the column name, if you want it to have a different name to the property.
 For now, Taike only supports basic String, Number and Boolean columns. Foreign keys will arrive in a future version.
 
 ### Decorators
-Building spec objects can be tedious. Taike provides composable decorators for attaching spec properties. The following properties are available under `taike.decorators`: `primary`, `required`, `unique`, `autoincrement`, `column` and `size`. There's also `id`, which attaches both `primary` and `autoincrement`.
+Building spec objects can be tedious. Taike provides composable decorators for attaching spec properties. The following properties are available under `taike.decorators`: `primary`, `required`, `unique`, `autoincrement`, `column` and `size`.
 
 ## Licence
 MIT

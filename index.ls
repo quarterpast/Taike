@@ -44,6 +44,5 @@ bool-deco = (prop)->
 		(if typeof obj is \object then obj else type:obj) import (prop):true
 
 <[ primary required unique autoincrement ]> .for-each bool-deco
-taike.decorators.id = taike.decorators.primary . taike.decorators.autoincrement
 
 module.exports = taike
